@@ -14,7 +14,6 @@ import {
   Menu,
   Phone,
   PlugZap,
-  ShieldCheck,
   Sprout,
   UsersRound,
   Wrench,
@@ -161,20 +160,15 @@ function App() {
             <div className="hero-copy">
               <p className="section-kicker">South African Infrastructure Group</p>
               <h1>
-                <span>Building</span>
-                <span>Infrastructure.</span>
-                <span>Enabling</span>
-                <span>Enterprise.</span>
-                <span>Creating</span>
-                <span>Sustainable Opportunity.</span>
+                Building Infrastructure.{" "}
+                Enabling Enterprise.{" "}
+                Creating Sustainable Opportunity.
               </h1>
               <p className="hero-text">
-                <span>Uhuru Group is a diversified</span>{" "}
-                <span>South African infrastructure,</span>{" "}
-                <span>property and enterprise development</span>{" "}
-                <span>group delivering integrated construction,</span>{" "}
-                <span>facilities management, property investment</span>{" "}
-                <span>and artisan enablement solutions.</span>
+                Uhuru Group is a diversified South African infrastructure,
+                property and enterprise development group delivering integrated
+                construction, facilities management, property investment and
+                artisan enablement solutions.
               </p>
               <div className="hero-actions">
                 <a className="button primary" href="#services">
@@ -326,18 +320,15 @@ function App() {
           <div className="contact-grid">
             <aside className="contact-panel">
               <h3>Group Contact Details</h3>
-              <a href="tel:+27000000000">
-                <Phone size={19} /> Phone [TBC]
+              <a href="tel:+27814616953">
+                <Phone size={19} /> 081 461 6953
               </a>
               <a href="mailto:info@uhurugroup.co.za">
-                <Mail size={19} /> Email [TBC]
+                <Mail size={19} /> info@uhurugroup.co.za
               </a>
               <p>
-                <Factory size={19} /> Address [TBC]
+                <Factory size={19} /> 45 Tambotie Avenue, Pretoria, South Africa, 0184
               </p>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-                <ShieldCheck size={19} /> LinkedIn [TBC]
-              </a>
               <div className="contact-note">
                 <CircleDollarSign size={22} />
                 <p>
