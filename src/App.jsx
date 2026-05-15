@@ -1,20 +1,27 @@
 import { useState } from "react";
 import {
   ArrowRight,
+  Award,
   BadgeCheck,
   Building2,
-  ChevronRight,
   CircleDollarSign,
   ClipboardCheck,
+  Eye,
   Factory,
-  Handshake,
+  Globe,
+  GraduationCap,
   HardHat,
+  Handshake,
   Landmark,
   Mail,
+  MapPin,
   Menu,
   Phone,
   PlugZap,
+  Settings,
+  ShieldCheck,
   Sprout,
+  Target,
   UsersRound,
   Wrench,
   X,
@@ -29,66 +36,41 @@ const navItems = [
   ["Contact", "#contact"],
 ];
 
-const companies = [
+const subsidiaries = [
+  { icon: HardHat, name: "UHURU TRADING 2004", suffix: "(PTY) LTD" },
+  { icon: Factory, name: "TOP BUILDING", suffix: "(PTY) LTD" },
+  { icon: Building2, name: "TOP BUILDING INVESTMENTS", suffix: "(PTY) LTD" },
+  { icon: Handshake, name: "UHURU CONSORTIUM", suffix: "(PTY) LTD" },
+  { icon: GraduationCap, name: "UHURU ACADEMY", suffix: "NPC" },
+];
+
+const mvv = [
   {
-    name: "Uhuru Trading 2004",
-    text: "Integrated property maintenance, facilities management and construction services across insurance, corporate and retail environments.",
+    icon: Target,
+    title: "OUR MISSION",
+    text: "To provide sustainable, reliable and cost-effective solutions that create lasting value for our clients, partners and communities.",
   },
   {
-    name: "Uhuru Academy",
-    text: "Artisan development and enterprise readiness platform for skills development, operational excellence and economic participation.",
+    icon: Eye,
+    title: "OUR VISION",
+    text: "To be a leading African infrastructure and enterprise development group recognised for operational excellence, transformation and sustainable growth.",
   },
   {
-    name: "Top Building Investment",
-    text: "Property investment and development through acquisition, redevelopment and value creation across selected sectors.",
-  },
-  {
-    name: "Uhuru Consortium",
-    text: "Special-purpose partnership platform for joint ventures, strategic collaborations and infrastructure project delivery.",
+    icon: UsersRound,
+    title: "OUR VALUES",
+    text: "Integrity. Excellence. Collaboration. Innovation. Sustainability.",
   },
 ];
 
 const services = [
-  {
-    icon: Building2,
-    title: "Facilities Management",
-    text: "Integrated FM solutions supporting operational continuity and long-term asset maintenance across commercial and retail environments.",
-  },
-  {
-    icon: HardHat,
-    title: "Construction Services",
-    text: "Renovations, refurbishments, general building works and project execution across residential, commercial and institutional environments.",
-  },
-  {
-    icon: Wrench,
-    title: "Property Maintenance",
-    text: "Planned, preventative and reactive maintenance that preserves infrastructure quality and reduces operational downtime.",
-  },
-  {
-    icon: PlugZap,
-    title: "Electrical & Plumbing",
-    text: "Electrical, plumbing and technical services aligned with quality, safety and compliance standards.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Project Management",
-    text: "Structured planning, coordination and execution with quality oversight and stakeholder engagement throughout.",
-  },
-  {
-    icon: Landmark,
-    title: "Property Investment",
-    text: "Strategic property acquisition, redevelopment and value creation across selected South African property sectors.",
-  },
-  {
-    icon: Sprout,
-    title: "Enterprise Development",
-    text: "Artisan development, enterprise readiness and economic participation through practical skills and operational exposure.",
-  },
-  {
-    icon: Handshake,
-    title: "Joint Venture Solutions",
-    text: "Structured partnership and project collaboration for infrastructure, construction and strategic development opportunities.",
-  },
+  { icon: Building2, title: "Facilities Management", text: "Integrated FM solutions that support operational continuity across corporate and retail environments." },
+  { icon: HardHat, title: "Construction Services", text: "Renovations, refurbishments and general building works for commercial and institutional clients." },
+  { icon: Wrench, title: "Property Maintenance", text: "Planned, preventative and reactive maintenance that protects assets and reduces downtime." },
+  { icon: PlugZap, title: "Electrical & Plumbing", text: "Technical trades delivered with quality, compliance and safety as the operating standard." },
+  { icon: ClipboardCheck, title: "Project Management", text: "Structured project planning, coordination, quality oversight and stakeholder communication." },
+  { icon: Landmark, title: "Property Investment", text: "Strategic property acquisition, redevelopment and selected sector investment opportunities." },
+  { icon: Sprout, title: "Enterprise Development", text: "Artisan development and enterprise readiness that expands economic participation." },
+  { icon: Handshake, title: "Joint Venture Solutions", text: "Partnership-led delivery for infrastructure, construction and strategic development projects." },
 ];
 
 const impactPoints = [
@@ -100,17 +82,27 @@ const impactPoints = [
 ];
 
 const metrics = [
-  ["10+", "Years Operational Experience"],
-  ["Level 1", "B-BBEE Contributor"],
-  ["100+", "Deployable Workforce Capacity"],
-  ["Multi-Disc.", "Service Capability Across Trades"],
-  ["Corporate & Retail", "Client Exposure"],
+  { icon: Award, figure: "10+", label: "YEARS", sublabel: "Operational Experience" },
+  { icon: UsersRound, figure: "100+", label: "DEPLOYABLE", sublabel: "WORKFORCE CAPACITY" },
+  { icon: Award, figure: "LEVEL 1", label: "B-BBEE", sublabel: "CONTRIBUTOR" },
+  { icon: Settings, figure: null, label: "MULTI-DISCIPLINARY", sublabel: "SERVICE CAPABILITY" },
+  { icon: Building2, figure: null, label: "CORPORATE & RETAIL", sublabel: "CLIENT EXPOSURE" },
+];
+
+const contactDetails = [
+  { icon: Phone, label: "+27 86 111 8139", href: "tel:+27861118139" },
+  { icon: Mail, label: "info@uhuruafrica.co.za", href: "mailto:info@uhuruafrica.co.za" },
+  { icon: MapPin, label: "Midrand, Gauteng, South Africa", href: "https://maps.google.com/?q=Midrand%2C+Gauteng%2C+South+Africa" },
+  { icon: Globe, label: "www.uhuruafrica.co.za", href: "https://www.uhuruafrica.co.za" },
 ];
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formNotice, setFormNotice] = useState("");
 
   const closeMenu = () => setMenuOpen(false);
+  const handleSubmit = () =>
+    setFormNotice("Your email app will open with the enquiry details ready to send.");
 
   return (
     <>
@@ -121,13 +113,9 @@ function App() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => (
-            <a key={href} href={href}>
-              {label}
-            </a>
+            <a key={href} href={href}>{label}</a>
           ))}
-          <a className="nav-cta" href="#contact">
-            Contact Us
-          </a>
+          <a className="nav-cta" href="#contact">Contact Us</a>
         </nav>
 
         <button
@@ -135,7 +123,7 @@ function App() {
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => setMenuOpen((o) => !o)}
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -143,107 +131,95 @@ function App() {
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {navItems.map(([label, href]) => (
-              <a key={href} href={href} onClick={closeMenu}>
-                {label}
-              </a>
+              <a key={href} href={href} onClick={closeMenu}>{label}</a>
             ))}
-            <a className="nav-cta" href="#contact" onClick={closeMenu}>
-              Contact Us
-            </a>
+            <a className="nav-cta" href="#contact" onClick={closeMenu}>Contact Us</a>
           </nav>
         )}
       </header>
 
       <main>
-        <section className="hero section-pad" id="hero">
-          <div className="hero-shell">
-            <div className="hero-copy">
-              <p className="section-kicker">South African Infrastructure Group</p>
-              <h1>
-                Building Infrastructure.{" "}
-                Enabling Enterprise.{" "}
-                Creating Sustainable Opportunity.
-              </h1>
-              <p className="hero-text">
-                Uhuru Group is a diversified South African infrastructure,
-                property and enterprise development group delivering integrated
-                construction, facilities management, property investment and
-                artisan enablement solutions.
-              </p>
-              <div className="hero-actions">
-                <a className="button primary" href="#services">
-                  Our Services <ArrowRight size={18} />
-                </a>
-                <a className="button secondary" href="#contact">
-                  Contact Us
-                </a>
-              </div>
+        {/* ── HERO ─────────────────────────────────────────────── */}
+        <section className="hero" id="hero">
+          <div className="hero-inner">
+            <div className="hero-logo-card">
+              <img src={logoUrl} alt="Uhuru Africa Holdings" />
             </div>
-
-            <div className="hero-panel" aria-label="Uhuru Group capability summary">
-              <div className="mark-card">
-                <img src={logoUrl} alt="" aria-hidden="true" />
-              </div>
-              <div className="capability-grid">
-                <span>Construction</span>
-                <span>Facilities</span>
-                <span>Property</span>
-                <span>Enterprise</span>
-              </div>
-              <div className="signal-strip">
-                <span />
-                <span />
-                <span />
-              </div>
+            <div className="hero-text-block">
+              <h1>We have infrastructure to help businesses and communities grow sustainably.</h1>
+              <div className="hero-divider" />
+              <p className="hero-sub">
+                Through partnerships with investors, private and public partnerships, startups,
+                and communities to deliver sustainable and scalable solutions.
+              </p>
             </div>
           </div>
         </section>
 
+        {/* ── SUBSIDIARIES BAR ─────────────────────────────────── */}
+        <nav className="subs-bar" aria-label="Group companies">
+          <div className="sub-about-cell">
+            <UsersRound size={32} strokeWidth={1.5} />
+            <span>ABOUT US</span>
+          </div>
+          {subsidiaries.map(({ icon: Icon, name, suffix }) => (
+            <div className="sub-cell" key={name}>
+              <Icon size={30} strokeWidth={1.5} />
+              <span className="sub-name">{name}</span>
+              <span className="sub-suffix">{suffix}</span>
+            </div>
+          ))}
+        </nav>
+
+        {/* ── ABOUT ────────────────────────────────────────────── */}
         <section className="about section-pad" id="about">
-          <div className="section-grid">
-            <div>
-              <p className="section-kicker">About Uhuru Group</p>
-              <h2>Integrated Infrastructure & Enterprise Solutions</h2>
+          <div className="about-grid">
+            <div className="about-col">
+              <h2 className="about-title">ABOUT US</h2>
+              <div className="section-accent-line" />
               <p>
-                Uhuru Group is a South African holding company operating across property
-                maintenance, construction, facilities management, property investment and enterprise
-                development.
+                Uhuru Africa is a South African holding company operating across infrastructure,
+                property, enterprise development and strategic partnerships.
               </p>
               <p>
-                Through its group companies, Uhuru delivers practical, scalable and operationally
-                driven solutions to corporate, commercial, public sector and retail clients across
-                South Africa.
+                Our purpose is to connect capability, opportunity and investment to deliver
+                sustainable solutions that drive economic participation and long-term value creation.
               </p>
+              <a className="btn-outline" href="#contact">
+                READ MORE <ArrowRight size={14} />
+              </a>
             </div>
 
-            <div className="company-grid">
-              {companies.map((company) => (
-                <article className="company-card" key={company.name}>
-                  <ChevronRight size={18} aria-hidden="true" />
-                  <h3>{company.name}</h3>
-                  <p>{company.text}</p>
-                </article>
+            <div className="mvv-col">
+              {mvv.map(({ icon: Icon, title, text }, i) => (
+                <div
+                  className={`mvv-item${i < mvv.length - 1 ? " mvv-divider" : ""}`}
+                  key={title}
+                >
+                  <div className="mvv-icon-wrap">
+                    <Icon size={20} />
+                  </div>
+                  <div className="mvv-body">
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* ── SERVICES ─────────────────────────────────────────── */}
         <section className="services section-pad" id="services">
           <div className="section-heading">
             <p className="section-kicker">Services</p>
             <h2>What We Do</h2>
-            <p>
-              Practical, accountable delivery across the infrastructure, property and enterprise
-              value chain.
-            </p>
+            <p>Practical, accountable delivery across the infrastructure, property and enterprise value chain.</p>
           </div>
-
           <div className="service-grid">
             {services.map(({ icon: Icon, title, text }) => (
               <article className="service-card" key={title}>
-                <div className="icon-box">
-                  <Icon size={24} />
-                </div>
+                <div className="card-icon-box"><Icon size={23} /></div>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>
@@ -251,84 +227,130 @@ function App() {
           </div>
         </section>
 
+        {/* ── ESG & IMPACT ─────────────────────────────────────── */}
         <section className="impact section-pad" id="impact">
-          <div className="section-grid impact-grid">
-            <div>
+          <div className="impact-grid">
+            <div className="about-col">
               <p className="section-kicker">ESG & Impact</p>
               <h2>Building Sustainable Impact</h2>
               <p>
                 Uhuru Group believes infrastructure development and economic participation should
-                move together. Operations are grounded in transformation, skills development and
-                responsible business practice.
+                move together. Operations are grounded in transformation, skills development,
+                responsible procurement and ethical business conduct.
               </p>
               <p>
-                Through Uhuru Academy and enterprise enablement initiatives, the group supports the
-                development of commercially ready artisan enterprises capable of participating
-                meaningfully in the South African economy.
+                Through Uhuru Academy and enterprise enablement initiatives, the group supports
+                commercially ready artisan enterprises that can participate meaningfully in the
+                South African economy.
               </p>
             </div>
 
-            <div className="impact-panel">
+            <div className="impact-points-col">
               {impactPoints.map((point) => (
                 <div className="impact-point" key={point}>
-                  <BadgeCheck size={20} />
+                  <BadgeCheck size={18} />
                   <span>{point}</span>
                 </div>
               ))}
+              <div className="academy-box">
+                <GraduationCap size={24} />
+                <div>
+                  <h3>Uhuru Academy</h3>
+                  <p>
+                    A dedicated artisan development and enterprise readiness platform focused on
+                    skills, operational excellence and sustainable enterprise participation.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div className="academy-callout">
-            <div className="icon-box">
-              <UsersRound size={24} />
-            </div>
-            <div>
-              <h3>Uhuru Academy</h3>
-              <p>
-                A dedicated artisan development and enterprise readiness platform, building
-                commercially capable enterprises from the ground up.
+        {/* ── METRICS ──────────────────────────────────────────── */}
+        <section className="metrics section-pad" id="metrics">
+          <div className="metrics-row">
+            {metrics.map(({ icon: Icon, figure, label, sublabel }, i) => (
+              <div
+                className={`metric-cell${i < metrics.length - 1 ? " metric-border" : ""}`}
+                key={label}
+              >
+                <div className="metric-icon-ring"><Icon size={26} /></div>
+                {figure && <strong className="metric-figure">{figure}</strong>}
+                <span className="metric-label">{label}</span>
+                <span className="metric-sublabel">{sublabel}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── CTA BAND ─────────────────────────────────────────── */}
+        <section className="cta-band">
+          <div className="cta-inner">
+            <div className="cta-copy">
+              <h2 className="cta-heading">PARTNERING FOR A BETTER FUTURE</h2>
+              <p className="cta-sub">
+                Let's build sustainable solutions together. We look forward to partnering with you.
               </p>
             </div>
+            <a className="btn-schedule" href="#contact">
+              SCHEDULE AN APPOINTMENT WITH US <ArrowRight size={18} />
+            </a>
           </div>
         </section>
 
-        <section className="metrics section-pad" id="metrics">
-          <div className="metrics-inner">
-            <p className="section-kicker">Metrics</p>
-            <h2>Capability With Operational Depth</h2>
-            <div className="metric-row">
-              {metrics.map(([figure, label]) => (
-                <article className="metric-card" key={label}>
-                  <strong>{figure}</strong>
-                  <span>{label}</span>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        {/* ── CONTACT ──────────────────────────────────────────── */}
         <section className="contact section-pad" id="contact">
           <div className="section-heading">
             <p className="section-kicker">Contact</p>
-            <h2>Let's Build Something Together</h2>
+            <h2>Start A Conversation</h2>
             <p>
-              For business inquiries, partnerships, procurement opportunities or project discussions,
-              contact the Uhuru Group team.
+              For business inquiries, partnerships, procurement opportunities or project
+              discussions, contact the Uhuru Group team.
             </p>
           </div>
 
           <div className="contact-grid">
+            <form
+              className="enquiry-form"
+              action="mailto:info@uhuruafrica.co.za"
+              method="post"
+              encType="text/plain"
+              onSubmit={handleSubmit}
+            >
+              <label>Name<input name="Name" type="text" autoComplete="name" required /></label>
+              <label>Company<input name="Company" type="text" autoComplete="organization" /></label>
+              <label>Email<input name="Email" type="email" autoComplete="email" required /></label>
+              <label>Phone<input name="Phone" type="tel" autoComplete="tel" /></label>
+              <label className="span-2">
+                Enquiry Type
+                <select name="Enquiry Type" defaultValue="Partnerships">
+                  <option>Partnerships</option>
+                  <option>Procurement</option>
+                  <option>Project Discussion</option>
+                  <option>Enterprise Development</option>
+                  <option>General Enquiry</option>
+                </select>
+              </label>
+              <label className="span-2">
+                Message
+                <textarea name="Message" rows="6" required />
+              </label>
+              <button className="form-submit span-2" type="submit">
+                Submit Enquiry <ArrowRight size={18} />
+              </button>
+              {formNotice && <p className="form-notice span-2">{formNotice}</p>}
+            </form>
+
             <aside className="contact-panel">
-              <h3>Group Contact Details</h3>
-              <a href="tel:+27814616953">
-                <Phone size={19} /> 081 461 6953
-              </a>
-              <a href="mailto:info@uhurugroup.co.za">
-                <Mail size={19} /> info@uhurugroup.co.za
-              </a>
-              <p>
-                <Factory size={19} /> 45 Tambotie Avenue, Pretoria, South Africa, 0184
-              </p>
+              <div className="contact-panel-header">
+                <ShieldCheck size={28} />
+                <h3>Group Contact Details</h3>
+              </div>
+              {contactDetails.map(({ icon: Icon, label, href }) => (
+                <a href={href} key={label}>
+                  <Icon size={17} /><span>{label}</span>
+                </a>
+              ))}
               <div className="contact-note">
                 <CircleDollarSign size={22} />
                 <p>
@@ -338,14 +360,31 @@ function App() {
               </div>
             </aside>
           </div>
+
+          <div className="map-frame">
+            <iframe
+              title="Uhuru Group location in Midrand, Gauteng"
+              src="https://www.google.com/maps?q=Midrand%2C+Gauteng%2C+South+Africa&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </section>
       </main>
 
+      {/* ── FOOTER ───────────────────────────────────────────────── */}
       <footer className="site-footer">
-        <img src={logoUrl} alt="Uhuru Group logo" />
-        <p>Building Infrastructure. Enabling Enterprise. Creating Sustainable Opportunity.</p>
-        <small>© 2026 Uhuru Group. All rights reserved.</small>
+        <div className="footer-bar">
+          {contactDetails.map(({ icon: Icon, label, href }) => (
+            <a href={href} key={label} className="footer-item">
+              <Icon size={15} />
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+        <p className="footer-copy">Copyright 2026 Uhuru Group. All rights reserved.</p>
       </footer>
+
     </>
   );
 }
