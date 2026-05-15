@@ -36,14 +36,6 @@ const navItems = [
   ["Contact", "#contact"],
 ];
 
-const subsidiaries = [
-  { icon: HardHat, name: "UHURU TRADING 2004", suffix: "(PTY) LTD" },
-  { icon: Factory, name: "TOP BUILDING", suffix: "(PTY) LTD" },
-  { icon: Building2, name: "TOP BUILDING INVESTMENTS", suffix: "(PTY) LTD" },
-  { icon: Handshake, name: "UHURU CONSORTIUM", suffix: "(PTY) LTD" },
-  { icon: GraduationCap, name: "UHURU ACADEMY", suffix: "NPC" },
-];
-
 const mvv = [
   {
     icon: Target,
@@ -59,6 +51,167 @@ const mvv = [
     icon: UsersRound,
     title: "OUR VALUES",
     text: "Integrity. Excellence. Collaboration. Innovation. Sustainability.",
+  },
+];
+
+const companyTabs = [
+  {
+    id: "about",
+    icon: UsersRound,
+    name: "ABOUT US",
+    suffix: "",
+    title: "ABOUT US",
+    paragraphs: [
+      "Uhuru Africa is a South African holding company operating across infrastructure, property, enterprise development and strategic partnerships.",
+      "Our purpose is to connect capability, opportunity and investment to deliver sustainable solutions that drive economic participation and long-term value creation.",
+    ],
+    cta: "READ MORE",
+    details: mvv,
+  },
+  {
+    id: "trading",
+    icon: HardHat,
+    name: "UHURU TRADING 2004",
+    suffix: "(PTY) LTD",
+    title: "UHURU TRADING 2004 (PTY) LTD",
+    paragraphs: [
+      "Uhuru Trading 2004 provides integrated property maintenance, facilities management and construction support for corporate, retail and institutional environments.",
+      "The business is built for practical delivery, responsive teams and consistent service standards across planned and reactive work.",
+    ],
+    cta: "DISCUSS A PROJECT",
+    details: [
+      {
+        icon: Wrench,
+        title: "CORE SERVICES",
+        text: "Planned maintenance, reactive call-outs, facilities support and general building works.",
+      },
+      {
+        icon: ClipboardCheck,
+        title: "DELIVERY FOCUS",
+        text: "Reliable coordination, quality oversight and reduced operational downtime for clients.",
+      },
+      {
+        icon: ShieldCheck,
+        title: "OPERATING STANDARD",
+        text: "Work delivered with safety, accountability and clear communication from start to finish.",
+      },
+    ],
+  },
+  {
+    id: "top-building",
+    icon: Factory,
+    name: "TOP BUILDING",
+    suffix: "(PTY) LTD",
+    title: "TOP BUILDING (PTY) LTD",
+    paragraphs: [
+      "Top Building delivers construction, refurbishment and building works for commercial, residential and institutional projects.",
+      "The company supports clients who need disciplined project execution, trade coordination and quality-driven site delivery.",
+    ],
+    cta: "VIEW CAPABILITY",
+    details: [
+      {
+        icon: HardHat,
+        title: "BUILDING WORKS",
+        text: "Renovations, refurbishments, fit-outs and general construction requirements.",
+      },
+      {
+        icon: Settings,
+        title: "PROJECT CONTROL",
+        text: "Structured planning, scheduling and coordination across multi-disciplinary workstreams.",
+      },
+      {
+        icon: BadgeCheck,
+        title: "QUALITY OUTCOMES",
+        text: "Execution focused on durability, compliance and professional finish quality.",
+      },
+    ],
+  },
+  {
+    id: "investments",
+    icon: Building2,
+    name: "TOP BUILDING INVESTMENTS",
+    suffix: "(PTY) LTD",
+    title: "TOP BUILDING INVESTMENTS (PTY) LTD",
+    paragraphs: [
+      "Top Building Investments focuses on property investment, redevelopment and long-term asset value creation.",
+      "The business identifies opportunities where operational insight, capital and development capability can unlock sustainable property value.",
+    ],
+    cta: "EXPLORE INVESTMENT",
+    details: [
+      {
+        icon: Landmark,
+        title: "PROPERTY STRATEGY",
+        text: "Targeted acquisition, repositioning and redevelopment across selected property sectors.",
+      },
+      {
+        icon: Building2,
+        title: "ASSET VALUE",
+        text: "Practical improvements that support stronger utilisation, resilience and long-term returns.",
+      },
+      {
+        icon: CircleDollarSign,
+        title: "PARTNERSHIP MODEL",
+        text: "Investment thinking aligned with operational capability and responsible growth.",
+      },
+    ],
+  },
+  {
+    id: "consortium",
+    icon: Handshake,
+    name: "UHURU CONSORTIUM",
+    suffix: "(PTY) LTD",
+    title: "UHURU CONSORTIUM (PTY) LTD",
+    paragraphs: [
+      "Uhuru Consortium is the group's partnership platform for joint ventures, strategic collaborations and infrastructure project participation.",
+      "It creates a structured route for investors, operators, public partners and communities to participate in scalable delivery opportunities.",
+    ],
+    cta: "PARTNER WITH US",
+    details: [
+      {
+        icon: Handshake,
+        title: "JOINT VENTURES",
+        text: "Structured collaboration for project delivery, procurement and specialist capability.",
+      },
+      {
+        icon: UsersRound,
+        title: "STAKEHOLDER ALIGNMENT",
+        text: "Partnerships shaped around clear roles, shared accountability and long-term value.",
+      },
+      {
+        icon: Sprout,
+        title: "SUSTAINABLE GROWTH",
+        text: "Solutions designed to support business, community and transformation outcomes.",
+      },
+    ],
+  },
+  {
+    id: "academy",
+    icon: GraduationCap,
+    name: "UHURU ACADEMY",
+    suffix: "NPC",
+    title: "UHURU ACADEMY NPC",
+    paragraphs: [
+      "Uhuru Academy is the group's artisan development and enterprise readiness platform.",
+      "It supports skills development, operational discipline and commercially capable participation in the infrastructure and property economy.",
+    ],
+    cta: "SUPPORT THE ACADEMY",
+    details: [
+      {
+        icon: GraduationCap,
+        title: "SKILLS DEVELOPMENT",
+        text: "Practical learning pathways for artisans, teams and emerging service providers.",
+      },
+      {
+        icon: Sprout,
+        title: "ENTERPRISE READINESS",
+        text: "Support that helps participants move from training into sustainable commercial work.",
+      },
+      {
+        icon: BadgeCheck,
+        title: "IMPACT FOCUS",
+        text: "Development linked to employability, procurement participation and community value.",
+      },
+    ],
   },
 ];
 
@@ -103,10 +256,12 @@ const contactDetails = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [formNotice, setFormNotice] = useState("");
+  const [activeCompanyTab, setActiveCompanyTab] = useState("about");
 
   const closeMenu = () => setMenuOpen(false);
   const handleSubmit = () =>
     setFormNotice("Your email app will open with the enquiry details ready to send.");
+  const activeTab = companyTabs.find((tab) => tab.id === activeCompanyTab) ?? companyTabs[0];
 
   return (
     <>
@@ -161,43 +316,49 @@ function App() {
         </section>
 
         {/* ── SUBSIDIARIES BAR ─────────────────────────────────── */}
-        <nav className="subs-bar" aria-label="Group companies">
-          <div className="sub-about-cell">
-            <UsersRound size={32} strokeWidth={1.5} />
-            <span>ABOUT US</span>
-          </div>
-          {subsidiaries.map(({ icon: Icon, name, suffix }) => (
-            <div className="sub-cell" key={name}>
-              <Icon size={30} strokeWidth={1.5} />
+        <div className="subs-bar" role="tablist" aria-label="Group companies">
+          {companyTabs.map(({ id, icon: Icon, name, suffix }) => (
+            <button
+              className={`sub-tab${id === activeCompanyTab ? " is-active" : ""}`}
+              id={`${id}-tab`}
+              type="button"
+              role="tab"
+              aria-selected={id === activeCompanyTab}
+              aria-controls="company-tab-panel"
+              key={id}
+              onClick={() => setActiveCompanyTab(id)}
+            >
+              <Icon size={id === "about" ? 32 : 30} strokeWidth={1.5} />
               <span className="sub-name">{name}</span>
-              <span className="sub-suffix">{suffix}</span>
-            </div>
+              {suffix && <span className="sub-suffix">{suffix}</span>}
+            </button>
           ))}
-        </nav>
+        </div>
 
         {/* ── ABOUT ────────────────────────────────────────────── */}
         <section className="about section-pad" id="about">
-          <div className="about-grid">
+          <div
+            className="about-grid"
+            id="company-tab-panel"
+            role="tabpanel"
+            aria-labelledby={`${activeTab.id}-tab`}
+            tabIndex="0"
+          >
             <div className="about-col">
-              <h2 className="about-title">ABOUT US</h2>
+              <h2 className="about-title">{activeTab.title}</h2>
               <div className="section-accent-line" />
-              <p>
-                Uhuru Africa is a South African holding company operating across infrastructure,
-                property, enterprise development and strategic partnerships.
-              </p>
-              <p>
-                Our purpose is to connect capability, opportunity and investment to deliver
-                sustainable solutions that drive economic participation and long-term value creation.
-              </p>
+              {activeTab.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
               <a className="btn-outline" href="#contact">
-                READ MORE <ArrowRight size={14} />
+                {activeTab.cta} <ArrowRight size={14} />
               </a>
             </div>
 
             <div className="mvv-col">
-              {mvv.map(({ icon: Icon, title, text }, i) => (
+              {activeTab.details.map(({ icon: Icon, title, text }, i) => (
                 <div
-                  className={`mvv-item${i < mvv.length - 1 ? " mvv-divider" : ""}`}
+                  className={`mvv-item${i < activeTab.details.length - 1 ? " mvv-divider" : ""}`}
                   key={title}
                 >
                   <div className="mvv-icon-wrap">

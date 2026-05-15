@@ -237,28 +237,38 @@ h1 {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.sub-about-cell,
-.sub-cell {
+.sub-tab {
   align-items: center;
+  background: var(--white);
+  border: 0;
+  border-left: 1px solid var(--line);
+  color: var(--navy);
   display: flex;
   flex-direction: column;
   gap: 7px;
   justify-content: center;
+  min-height: 126px;
   padding: 22px 10px;
+  position: relative;
   text-align: center;
+  transition: background 140ms, color 140ms, transform 140ms;
 }
 
-.sub-about-cell {
+.sub-tab:first-child {
+  border-left: 0;
+}
+
+.sub-tab:hover {
+  background: var(--soft);
+  transform: translateY(-1px);
+}
+
+.sub-tab.is-active {
   background: var(--navy);
   color: var(--white);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  position: relative;
-  text-transform: uppercase;
 }
 
-.sub-about-cell::after {
+.sub-tab.is-active::after {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid var(--navy);
@@ -269,15 +279,8 @@ h1 {
   transform: translateX(-50%);
 }
 
-.sub-cell {
-  border-left: 1px solid var(--line);
-  color: var(--navy);
-  transition: background 140ms, transform 140ms;
-}
-.sub-cell:hover { background: var(--soft); transform: translateY(-1px); }
-
 .sub-name {
-  color: var(--navy);
+  color: currentColor;
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -286,7 +289,7 @@ h1 {
 }
 
 .sub-suffix {
-  color: var(--muted);
+  color: color-mix(in srgb, currentColor 72%, transparent);
   font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -827,14 +830,17 @@ h3 {
   .hero-inner { grid-template-columns: 220px 1fr; }
 
   .subs-bar { grid-template-columns: repeat(3, 1fr); }
-  .sub-about-cell {
+  .sub-tab {
+    min-height: 118px;
+  }
+  .sub-tab:first-child {
     flex-direction: row;
     gap: 12px;
     grid-column: span 3;
     justify-content: flex-start;
     padding: 16px 20px;
   }
-  .sub-about-cell::after { display: none; }
+  .sub-tab.is-active::after { display: none; }
 
   .about-grid,
   .impact-grid,
@@ -865,7 +871,8 @@ h3 {
   .hero-logo-card { max-width: 200px; }
 
   .subs-bar { grid-template-columns: repeat(2, 1fr); }
-  .sub-about-cell { grid-column: span 2; }
+  .sub-tab:first-child { grid-column: span 2; }
+  .sub-tab { min-height: 112px; }
 
   .service-grid { grid-template-columns: 1fr; }
 
