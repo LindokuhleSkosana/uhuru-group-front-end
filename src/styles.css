@@ -870,9 +870,68 @@ h3 {
   }
   .hero-logo-card { max-width: 200px; }
 
-  .subs-bar { grid-template-columns: repeat(2, 1fr); }
-  .sub-tab:first-child { grid-column: span 2; }
-  .sub-tab { min-height: 112px; }
+  .subs-bar {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 12px 14px 16px;
+    scroll-padding-inline: 14px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .subs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sub-tab,
+  .sub-tab:first-child {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    flex: 0 0 142px;
+    flex-direction: column;
+    grid-column: auto;
+    justify-content: center;
+    min-height: 104px;
+    padding: 14px 10px;
+    scroll-snap-align: start;
+  }
+
+  .sub-tab.is-active {
+    box-shadow: 0 12px 28px rgba(13, 31, 60, 0.2);
+  }
+
+  .sub-tab svg {
+    height: 26px;
+    width: 26px;
+  }
+
+  .sub-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+  }
+
+  .sub-suffix {
+    font-size: 0.58rem;
+  }
+
+  .about.section-pad {
+    padding-top: 46px;
+  }
+
+  .about-grid {
+    gap: 34px;
+  }
+
+  .mvv-item {
+    gap: 14px;
+    padding: 22px 0;
+  }
+
+  .mvv-icon-wrap {
+    height: 46px;
+    width: 46px;
+  }
 
   .service-grid { grid-template-columns: 1fr; }
 
