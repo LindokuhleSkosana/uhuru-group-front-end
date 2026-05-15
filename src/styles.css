@@ -8,7 +8,11 @@
   --line:      #dde3ea;
   --soft:      #f0f4f8;
   --white:     #ffffff;
-  --shadow:    0 12px 40px rgba(13, 31, 60, 0.12);
+  --radius-sm: 8px;
+  --radius:    14px;
+  --radius-lg: 22px;
+  --shadow:    0 14px 42px rgba(13, 31, 60, 0.11);
+  --shadow-lg: 0 24px 72px rgba(13, 31, 60, 0.18);
 
   color: var(--ink);
   font-family: Inter, Montserrat, system-ui, Arial, sans-serif;
@@ -24,7 +28,7 @@
 *::after { box-sizing: border-box; }
 
 body {
-  background: var(--white);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
@@ -47,7 +51,7 @@ p {
 .site-header {
   align-items: center;
   background: rgba(13, 31, 60, 0.97);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   color: var(--white);
   display: flex;
@@ -65,6 +69,7 @@ p {
   align-items: center;
   background: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
   display: inline-flex;
   height: 46px;
   justify-content: center;
@@ -81,13 +86,15 @@ p {
   font-weight: 700;
   letter-spacing: 0.02em;
   padding: 10px 13px;
+  border-radius: var(--radius-sm);
   transition: color 140ms;
 }
-.desktop-nav a:not(.nav-cta):hover { color: var(--white); }
+.desktop-nav a:not(.nav-cta):hover { background: rgba(255, 255, 255, 0.08); color: var(--white); }
 
 .nav-cta {
   align-items: center;
   background: var(--white);
+  border-radius: var(--radius-sm);
   color: var(--navy);
   display: inline-flex;
   font-size: 0.8rem;
@@ -98,14 +105,15 @@ p {
   margin-left: 10px;
   padding: 0 16px;
   text-transform: uppercase;
-  transition: background 140ms;
+  transition: background 140ms, transform 140ms;
 }
-.nav-cta:hover { background: var(--soft); }
+.nav-cta:hover { background: var(--soft); transform: translateY(-1px); }
 
 .menu-button {
   align-items: center;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm);
   color: var(--white);
   display: none;
   height: 42px;
@@ -115,6 +123,7 @@ p {
 
 .mobile-nav {
   background: var(--navy);
+  border-radius: 0 0 var(--radius) var(--radius);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   display: grid;
   left: 0;
@@ -185,7 +194,8 @@ p {
   align-items: center;
   background: var(--white);
   border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.32);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
   display: flex;
   justify-content: center;
   padding: clamp(28px, 4vw, 52px) clamp(22px, 3vw, 38px);
@@ -221,6 +231,8 @@ h1 {
   background: var(--white);
   border-bottom: 1px solid var(--line);
   border-top: 4px solid var(--navy);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(13, 31, 60, 0.06);
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
@@ -260,9 +272,9 @@ h1 {
 .sub-cell {
   border-left: 1px solid var(--line);
   color: var(--navy);
-  transition: background 140ms;
+  transition: background 140ms, transform 140ms;
 }
-.sub-cell:hover { background: var(--soft); }
+.sub-cell:hover { background: var(--soft); transform: translateY(-1px); }
 
 .sub-name {
   color: var(--navy);
@@ -356,6 +368,7 @@ h3 {
 .btn-outline {
   align-items: center;
   border: 2px solid var(--navy);
+  border-radius: var(--radius-sm);
   color: var(--navy);
   display: inline-flex;
   font-size: 0.78rem;
@@ -366,9 +379,9 @@ h3 {
   margin-top: 28px;
   padding: 0 20px;
   text-transform: uppercase;
-  transition: background 140ms, color 140ms;
+  transition: background 140ms, color 140ms, transform 140ms;
 }
-.btn-outline:hover { background: var(--navy); color: var(--white); }
+.btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
 
 /* MVV */
 .mvv-col { display: flex; flex-direction: column; }
@@ -417,6 +430,7 @@ h3 {
 .service-card {
   background: var(--white);
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   min-height: 220px;
   padding: 28px 22px;
   transition: border-color 150ms, box-shadow 150ms, transform 150ms;
@@ -430,6 +444,7 @@ h3 {
 .card-icon-box {
   align-items: center;
   background: rgba(13, 31, 60, 0.07);
+  border-radius: var(--radius-sm);
   color: var(--navy);
   display: inline-flex;
   height: 46px;
@@ -454,6 +469,8 @@ h3 {
 
 .impact-points-col {
   background: var(--navy);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
   padding: 32px;
 }
 
@@ -475,6 +492,7 @@ h3 {
   align-items: flex-start;
   background: rgba(255, 255, 255, 0.05);
   border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
   color: var(--white);
   display: flex;
   gap: 16px;
@@ -496,6 +514,9 @@ h3 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   margin: 0 auto;
   max-width: 1200px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .metric-cell {
@@ -582,11 +603,16 @@ h3 {
 
 .cta-inner {
   align-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(221, 227, 234, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 52px rgba(13, 31, 60, 0.08);
   display: flex;
   gap: 40px;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
+  padding: clamp(24px, 4vw, 34px);
   position: relative;
   z-index: 1;
 }
@@ -604,6 +630,7 @@ h3 {
 .btn-schedule {
   align-items: center;
   background: var(--navy);
+  border-radius: var(--radius-sm);
   color: var(--white);
   display: inline-flex;
   flex-shrink: 0;
@@ -632,6 +659,8 @@ h3 {
 
 .enquiry-form {
   background: var(--soft);
+  border: 1px solid rgba(221, 227, 234, 0.9);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   display: grid;
   gap: 18px;
@@ -653,6 +682,7 @@ h3 {
 .enquiry-form textarea {
   background: var(--white);
   border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   color: var(--ink);
   min-height: 46px;
   padding: 10px 13px;
@@ -674,6 +704,7 @@ h3 {
   align-items: center;
   background: var(--navy);
   border: none;
+  border-radius: var(--radius-sm);
   color: var(--white);
   display: inline-flex;
   font-size: 0.82rem;
@@ -690,6 +721,7 @@ h3 {
 
 .form-notice {
   background: rgba(26, 127, 207, 0.08);
+  border-radius: var(--radius-sm);
   color: var(--navy);
   font-size: 0.88rem;
   padding: 12px 14px;
@@ -697,6 +729,7 @@ h3 {
 
 .contact-panel {
   background: var(--navy);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   color: var(--white);
   padding: clamp(24px, 4vw, 34px);
@@ -728,6 +761,7 @@ h3 {
 .contact-note {
   align-items: flex-start;
   background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
   display: flex;
   gap: 12px;
   margin-top: 18px;
@@ -739,6 +773,7 @@ h3 {
 .map-frame {
   background: var(--soft);
   border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   height: 320px;
   margin: 24px auto 0;
   max-width: 1200px;

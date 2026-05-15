@@ -90,9 +90,13 @@ const metrics = [
 ];
 
 const contactDetails = [
-  { icon: Phone, label: "+27 86 111 8139", href: "tel:+27861118139" },
-  { icon: Mail, label: "info@uhuruafrica.co.za", href: "mailto:info@uhuruafrica.co.za" },
-  { icon: MapPin, label: "Midrand, Gauteng, South Africa", href: "https://maps.google.com/?q=Midrand%2C+Gauteng%2C+South+Africa" },
+  { icon: Phone, label: "081 461 6953", href: "tel:+27814616953" },
+  { icon: Mail, label: "info@uhurugroup.co.za", href: "mailto:info@uhurugroup.co.za" },
+  {
+    icon: MapPin,
+    label: "45 Tambotie Avenue, Pretoria, South Africa, 0184",
+    href: "https://maps.google.com/?q=45+Tambotie+Avenue%2C+Pretoria%2C+South+Africa%2C+0184",
+  },
   { icon: Globe, label: "www.uhuruafrica.co.za", href: "https://www.uhuruafrica.co.za" },
 ];
 
@@ -312,7 +316,7 @@ function App() {
           <div className="contact-grid">
             <form
               className="enquiry-form"
-              action="mailto:info@uhuruafrica.co.za"
+              action="mailto:info@uhurugroup.co.za"
               method="post"
               encType="text/plain"
               onSubmit={handleSubmit}
@@ -363,8 +367,8 @@ function App() {
 
           <div className="map-frame">
             <iframe
-              title="Uhuru Group location in Midrand, Gauteng"
-              src="https://www.google.com/maps?q=Midrand%2C+Gauteng%2C+South+Africa&output=embed"
+              title="Uhuru Group location at 45 Tambotie Avenue, Pretoria"
+              src="https://www.google.com/maps?q=45+Tambotie+Avenue%2C+Pretoria%2C+South+Africa%2C+0184&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
