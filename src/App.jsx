@@ -301,9 +301,6 @@ function App() {
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section className="hero" id="hero">
           <div className="hero-inner">
-            <div className="hero-logo-card">
-              <img src={logoUrl} alt="Uhuru Group Holdings" />
-            </div>
             <div className="hero-text-block">
               <h1>We have infrastructure to help businesses and communities grow sustainably.</h1>
               <div className="hero-divider" />
