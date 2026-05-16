@@ -266,10 +266,6 @@ function App() {
   return (
     <>
       <header className="site-header">
-        <a className="brand" href="#hero" aria-label="Uhuru Group home" onClick={closeMenu}>
-          <img src={logoUrl} alt="Uhuru Group logo" />
-        </a>
-
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => (
             <a key={href} href={href}>{label}</a>
@@ -301,6 +297,9 @@ function App() {
         {/* ── HERO ─────────────────────────────────────────────── */}
         <section className="hero" id="hero">
           <div className="hero-inner">
+            <div className="hero-logo-card">
+              <img src={logoUrl} alt="Uhuru Group Holdings" />
+            </div>
             <div className="hero-text-block">
               <h1>We have infrastructure to help businesses and communities grow sustainably.</h1>
               <div className="hero-divider" />
