@@ -62,7 +62,7 @@ const companyTabs = [
     suffix: "",
     title: "ABOUT US",
     paragraphs: [
-      "Uhuru Africa is a South African holding company operating across infrastructure, property, enterprise development and strategic partnerships.",
+      "Uhuru Group is a South African holding company operating across infrastructure, property, enterprise development and strategic partnerships.",
       "Our purpose is to connect capability, opportunity and investment to deliver sustainable solutions that drive economic participation and long-term value creation.",
     ],
     cta: "READ MORE",
@@ -250,7 +250,7 @@ const contactDetails = [
     label: "45 Tambotie Avenue, Pretoria, South Africa, 0184",
     href: "https://maps.google.com/?q=45+Tambotie+Avenue%2C+Pretoria%2C+South+Africa%2C+0184",
   },
-  { icon: Globe, label: "www.uhuruafrica.co.za", href: "https://www.uhuruafrica.co.za" },
+  { icon: Globe, label: "www.uhurugroup.co.za", href: "https://www.uhurugroup.co.za/" },
 ];
 
 function App() {
@@ -302,7 +302,7 @@ function App() {
         <section className="hero" id="hero">
           <div className="hero-inner">
             <div className="hero-logo-card">
-              <img src={logoUrl} alt="Uhuru Africa Holdings" />
+              <img src={logoUrl} alt="Uhuru Group Holdings" />
             </div>
             <div className="hero-text-block">
               <h1>We have infrastructure to help businesses and communities grow sustainably.</h1>
